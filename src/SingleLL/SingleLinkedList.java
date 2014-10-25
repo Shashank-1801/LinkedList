@@ -5,7 +5,6 @@ public class SingleLinkedList {
 
 	private Node headNode = null;
 
-	//TODO change the way headNode is being implemented
 	public SingleLinkedList(){
 		headNode=null;
 	}
