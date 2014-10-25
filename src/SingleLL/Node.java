@@ -25,5 +25,9 @@ public class Node {
 		this.next = next;
 	}
 	
+	public String toString(){
+		return String.valueOf(this.data);
+		
+	}
 
 }

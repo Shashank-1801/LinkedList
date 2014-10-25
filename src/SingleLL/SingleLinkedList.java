@@ -20,6 +20,26 @@ public class SingleLinkedList {
 		headNode.setNext(null);		
 	}
 
+	public SingleLinkedList(SingleLinkedList List2){
+		int size = List2.lengthOfLinkedlist();
+		if(size == 0 ){
+			//do nothing			
+		}
+		else{
+			this.insertNode(List2.getHead(), this.lengthOfLinkedlist());
+		}
+		
+	}
+	
+	public void concatList(SingleLinkedList List2){
+		try{
+			this.insertNode(List2.getHead(), this.lengthOfLinkedlist());
+		}catch(Exception ex){
+			System.out.println("Error in concatination!");
+		}
+
+	}
+	
 	public void insertNode(Node newNode, int position){
 		try{
 			int sizeOfLinkedList = lengthOfLinkedlist();	
@@ -29,6 +49,13 @@ public class SingleLinkedList {
 				//headNode will not change
 			}
 
+			//inserting when no headNode exists
+			else if(headNode == null){
+				//System.out.println("No previous List found, insertion failed!");
+				//headNode will not change
+				headNode = newNode;
+			}
+			
 			//inserting at position 0
 			else if(position == 0){
 				newNode.setNext(headNode);
@@ -36,12 +63,6 @@ public class SingleLinkedList {
 				//headNode will change
 				headNode=newNode;
 			}
-
-			//inserting when no headNode exists
-			else if(headNode == null){
-				//System.out.println("No previous List found, insertion failed!");
-				//headNode will not change
-			}		
 
 			//insert in between nodes
 			else{
@@ -127,6 +148,53 @@ public class SingleLinkedList {
 
 	public Node getHead(){
 		return headNode;
+	}
+
+	public void update(int newValue, int position){
+		try{
+			int size = lengthOfLinkedlist();
+			//invalid position for deletion
+			if(position<0 || position>size-1){
+				System.out.println("Invalid position for updating, updating failed! at "+ position);
+				//headNode will not change
+			}
+			else{
+				Node temp = headNode;
+				for(int pos=0; pos<position; pos++){
+					temp=temp.getNext();
+				}
+				//temp is the required node for update
+				temp.setData(newValue);
+				//System.out.println("deleted node at  "+position+", deletion completed!");
+				//headNode will not change
+			}
+		}catch(Exception e){
+			System.out.println("Some error in updating!");		
+		}
+	}
+
+	public Integer getValue(int position){
+		try{
+			int size = lengthOfLinkedlist();
+			//invalid position for deletion
+			if(position<0 || position>size-1){
+				System.out.println("Invalid position, no Node exist! at "+ position);
+				//headNode will not change
+				return null;
+			}
+			else{
+				Node temp = headNode;
+				for(int pos=0; pos<position; pos++){
+					temp=temp.getNext();
+				}
+				//temp is the required node for update
+				return temp.getData();
+				//headNode will not change
+			}
+		}catch(Exception e){
+			System.out.println("Some error in updating!");		
+		}
+		return null;
 	}
 
 

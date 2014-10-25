@@ -39,6 +39,30 @@ public class singleLLImpl {
 		}
 		System.out.println("*************************");
 		
+		System.out.println("-------------------------");
+		for(int i=0; i<10; i++){
+			L1.update(posRandom(100),posRandom(L1.lengthOfLinkedlist()));
+			L1.display();
+		}
+		System.out.println("-------------------------");
+		
+		System.out.println("*************************");
+		for(int i=0; i<20; i++){
+			L1.insertNode(addRandom(), posRandom(L1.lengthOfLinkedlist()));
+			L1.display();
+		}
+		System.out.println("*************************");
+		
+		SingleLinkedList L4 = new SingleLinkedList(L1);
+		L4.display();
+		System.out.println("Value of the Node at pos 4 is:" + L4.getValue(4));
+
+		L1.concatList(L2);
+		L1.concatList(L3);
+		L1.display();
+		System.out.println("head of linked List is at : "+ L1.getHead().getData());
+		System.out.println("head at: "+ L1.getHead());
+		
 	}
 	
 	public static Node addRandom(){
@@ -52,10 +76,6 @@ public class singleLLImpl {
 	public static int posRandom(int lenght){
 		Random r = new Random();
 		int value = (r.nextInt(lenght+10));
-//		if(value==0){
-//			value=1;
-//		}
-		//System.out.println("position generated is: "+ value);
 		return value;
 	}
 
