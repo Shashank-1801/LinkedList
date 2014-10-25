@@ -1,4 +1,4 @@
 LinkedList
 ==========
 
-linkedList
+linkedList implementation by Shashank Shekhar
