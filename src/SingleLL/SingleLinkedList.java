@@ -1,6 +1,6 @@
 package SingleLL;
 
-
+//linked list implementation
 public class SingleLinkedList {
 
 	private Node headNode = null;
