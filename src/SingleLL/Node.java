@@ -2,6 +2,7 @@ package singleLL;
 
 public class Node {
 
+	//Node class for single linked list
 	private int data;
 	private Node next = null;
 	
