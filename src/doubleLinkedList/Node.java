@@ -1,7 +1,8 @@
 package doubleLinkedList;
 
 public class Node {
-
+	
+	//Node class for double linked list
 	private int data;
 	private Node next = null;
 	private Node previous = null;
