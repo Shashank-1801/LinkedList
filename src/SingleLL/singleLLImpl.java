@@ -1,6 +1,8 @@
-package SingleLL;
+package singleLL;
 
 import java.util.Random;
+
+import doubleLinkedList.Node;
 
 public class singleLLImpl {
 

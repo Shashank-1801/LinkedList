@@ -1,9 +1,10 @@
-package singleLL;
+package doubleLinkedList;
 
 public class Node {
 
 	private int data;
 	private Node next = null;
+	private Node previous = null;
 	
 	public Node(int data){
 		this.data = data;
@@ -25,8 +26,17 @@ public class Node {
 		this.next = next;
 	}
 	
+	public Node getPrevious() {
+		return previous;
+	}
+
+	public void setPrevious(Node previous) {
+		this.previous = previous;
+	}	
+	
 	public String toString(){
 		return String.valueOf(this.data);
+		
 	}
 
 }

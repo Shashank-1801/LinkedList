@@ -1,27 +1,27 @@
-package singleLL;
+package doubleLinkedList;
 
-import doubleLinkedList.Node;
-
-//linked list implementation
-public class SingleLinkedList {
+public class DoubleLinkedList {
 
 	private Node headNode = null;
 
-	public SingleLinkedList(){
-		headNode=null;
+	public DoubleLinkedList() {
+		// TODO Auto-generated constructor stub
+			headNode=null;
 	}
 
-	public SingleLinkedList(Node headNode){
+	public DoubleLinkedList(Node headNode){
 		this.headNode = headNode;
-		headNode.setNext(null);		
+		headNode.setNext(null);	
+		headNode.setPrevious(null);
 	}
 
-	public SingleLinkedList(int value){
+	public DoubleLinkedList(int value){
 		headNode = new Node(value);
-		headNode.setNext(null);		
+		headNode.setNext(null);
+		headNode.setPrevious(null);
 	}
 
-	public SingleLinkedList(SingleLinkedList List2){
+	public DoubleLinkedList(DoubleLinkedList List2){
 		int size = List2.lengthOfLinkedlist();
 		if(size == 0 ){
 			//do nothing			
@@ -32,7 +32,7 @@ public class SingleLinkedList {
 		
 	}
 	
-	public void concatList(SingleLinkedList List2){
+	public void concatList(DoubleLinkedList List2){
 		try{
 			this.insertNode(List2.getHead(), this.lengthOfLinkedlist());
 		}catch(Exception ex){
@@ -60,6 +60,7 @@ public class SingleLinkedList {
 			//inserting at position 0
 			else if(position == 0){
 				newNode.setNext(headNode);
+				newNode.setPrevious(null);
 				//System.out.println("Head node changed, insertion complete!");
 				//headNode will change
 				headNode=newNode;
@@ -68,11 +69,18 @@ public class SingleLinkedList {
 			//insert in between nodes
 			else{
 				Node temp = headNode;
+				Node nextToTemp = null;
 				for(int pos=0;pos < position-1 ; pos++){
 					temp=temp.getNext();
 				}
-				newNode.setNext(temp.getNext());
+				nextToTemp = temp.getNext();
+				newNode.setNext(nextToTemp);
+				if(nextToTemp!=null){		//if temp is not the last node
+					nextToTemp.setPrevious(newNode);
+				}
 				temp.setNext(newNode);
+				newNode.setPrevious(temp);
+				//headNode will not change
 				//System.out.println("new node inserted at "+ position +", insertion complete!");
 			}
 		}catch(Exception e){
@@ -94,20 +102,31 @@ public class SingleLinkedList {
 			else if(position==0){
 				//headNode will change
 				headNode = headNode.getNext();
+				if(headNode!=null){
+					headNode.setPrevious(null);
+				}
 			}
 
 			//deletion at other places
 			else {
 				Node temp = headNode;
+				Node nextToTemp = null;
 				for(int pos=0; pos<position-1; pos++){
 					temp=temp.getNext();
 				}
+				System.out.println("temp has the value" + temp.getData());
 				//temp is the node just before the required node for deletion
 				Node delNode = temp.getNext();
-				temp.setNext(delNode.getNext());
+				nextToTemp = delNode.getNext();
+				// we have .....->temp->delNode->nextToTemp....
+				temp.setNext(nextToTemp);
+				if(nextToTemp !=null){
+					nextToTemp.setPrevious(temp);
+				}
 				
 				//not sure if required
 				delNode.setNext(null);
+				delNode.setPrevious(null);
 				//System.out.println("deleted node at  "+position+", deletion completed!");
 				//headNode will not change
 			}		
@@ -117,6 +136,7 @@ public class SingleLinkedList {
 			}
 	}
 
+	//TODO change the following implementations for DLL
 	public int lengthOfLinkedlist(){
 		Node temp= headNode;
 		int size = 0;
@@ -200,6 +220,5 @@ public class SingleLinkedList {
 		}
 		return null;
 	}
-
 
 }
