@@ -49,6 +49,11 @@ public class DoubleLinkedList {
 				System.out.println("Invalid Position for insertion, insertion failed! at "+ position);
 				//headNode will not change
 			}
+			
+			//newNode is null
+			else if(newNode == null){
+				System.out.println("Invalid node for insertion!");
+			}
 
 			//inserting when no headNode exists
 			else if(headNode == null){

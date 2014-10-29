@@ -49,6 +49,11 @@ public class SingleLinkedList {
 				System.out.println("Invalid Position for insertion, insertion failed! at "+ position);
 				//headNode will not change
 			}
+			
+			//newNode is invalid or null
+			else if(newNode == null){
+				System.out.println("Invalid node for insertion!");
+			}
 
 			//inserting when no headNode exists
 			else if(headNode == null){
