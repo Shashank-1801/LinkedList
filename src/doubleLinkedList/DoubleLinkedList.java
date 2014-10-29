@@ -124,9 +124,7 @@ public class DoubleLinkedList {
 					nextToTemp.setPrevious(temp);
 				}
 				
-				//not sure if required
-				delNode.setNext(null);
-				delNode.setPrevious(null);
+				delNode = null; //removing the reference of the node
 				//System.out.println("deleted node at  "+position+", deletion completed!");
 				//headNode will not change
 			}		

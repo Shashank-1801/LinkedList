@@ -106,8 +106,7 @@ public class SingleLinkedList {
 				Node delNode = temp.getNext();
 				temp.setNext(delNode.getNext());
 				
-				//not sure if required
-				delNode.setNext(null);
+				delNode = null; //removing the reference of the node
 				//System.out.println("deleted node at  "+position+", deletion completed!");
 				//headNode will not change
 			}		
