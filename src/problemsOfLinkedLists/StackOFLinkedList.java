@@ -39,7 +39,7 @@ public class StackOFLinkedList {
 		System.out.println("null");
 	}
 	
-	public static void main(String args[]){
+	public static void main(String[] args){
 		
 		StackOFLinkedList stack = new StackOFLinkedList();
 		stack.push(10);
