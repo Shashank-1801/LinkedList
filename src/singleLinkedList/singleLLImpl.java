@@ -1,8 +1,6 @@
-package singleLL;
+package singleLinkedList;
 
 import java.util.Random;
-
-import doubleLinkedList.Node;
 
 public class singleLLImpl {
 
@@ -11,7 +9,7 @@ public class singleLLImpl {
 	 */
 	public static void main(String[] args) {
 		
-		Node firstNode = new Node(10);
+		 Node firstNode = new Node(10);
 		
 		SingleLinkedList L1 = new SingleLinkedList();
 		SingleLinkedList L2 = new SingleLinkedList(20);

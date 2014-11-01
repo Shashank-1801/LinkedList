@@ -135,6 +135,8 @@ public class CircularLinkedList {
 			lastNode.setNext(headNode.getNext());
 			Node delNode = headNode;
 			headNode = headNode.getNext();
+			//delete the node
+			delNode.setData(0);
 			delNode = null;
 		}
 		

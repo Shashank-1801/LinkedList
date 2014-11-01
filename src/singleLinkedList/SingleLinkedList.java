@@ -1,6 +1,4 @@
-package singleLL;
-
-import doubleLinkedList.Node;
+package singleLinkedList;
 
 //linked list implementation
 public class SingleLinkedList {
