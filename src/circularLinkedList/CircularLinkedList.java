@@ -73,7 +73,6 @@ public class CircularLinkedList {
 	}
 	
 	public void insertNode(Node newNode, int position){
-		int lenght = this.lenghtOfLinkedList();
 		//invalid position
 		if(position < 0 || position > lenghtOfLinkedList()){
 			System.out.println("Invalid position for insertion! at "+ position);
@@ -113,6 +112,42 @@ public class CircularLinkedList {
 			//temp is the node after which insertion will occur
 			newNode.setNext(temp.getNext());
 			temp.setNext(newNode);
+		}
+	}
+	
+	public void deleteNode(int position){
+		//if position is valid
+		int lenght = lenghtOfLinkedList();
+		if(position < 0 || position > lenght-1){
+			System.out.println("Invalid position for deletion! at "+ position);
+		}
+		//deletion when list has only one node
+		else if(lenghtOfLinkedList()==1){
+			headNode = null;
+		}
+		
+		//deletion on 0th position
+		else if(position==0){
+			Node lastNode= headNode;
+			while(lastNode.getNext()!= headNode){
+				lastNode = lastNode.getNext();
+			}
+			lastNode.setNext(headNode.getNext());
+			Node delNode = headNode;
+			headNode = headNode.getNext();
+			delNode = null;
+		}
+		
+		//valid deletions
+		else{
+			Node temp = headNode;
+			for(int i=0; i<position-1; i++){
+				temp=temp.getNext();
+			}
+			//temp is the node before the node to be deleted.
+			Node delNode = temp.getNext();
+			temp.setNext(delNode.getNext());			
+			delNode = null;
 		}
 	}
 	

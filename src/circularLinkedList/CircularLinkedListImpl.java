@@ -20,6 +20,14 @@ public class CircularLinkedListImpl {
 			c3.display();
 		}
 		System.out.println(c3.lenghtOfLinkedList() + " is the lenght of CLL");
+		
+		for(int i=0; i<27 ; i++){
+			c3.deleteNode(posRandom(c3.lenghtOfLinkedList()));
+			c3.display();
+		}
+		System.out.println(c3.lenghtOfLinkedList() + " is the lenght of CLL after deletion");
+
+
 	}
 	
 	public static Node addRandom(){
@@ -33,6 +41,7 @@ public class CircularLinkedListImpl {
 	public static int posRandom(int lenght){
 		Random r = new Random();
 		int value = (r.nextInt(lenght+3));
+		//System.out.println("Node returned with value: "+ value);
 		return value;
 	}
 
