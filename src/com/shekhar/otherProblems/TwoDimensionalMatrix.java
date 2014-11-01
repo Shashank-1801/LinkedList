@@ -9,12 +9,13 @@ public class TwoDimensionalMatrix {
 	public TwoDimensionalMatrix(double[][] matrix, int size){
 		this.matrix = matrix;
 		this.size = size;
-		double[][] elements = new double[size][size];
+/*		double[][] elements = new double[size][size];
 		for(int i=0; i<size; i++){
 			for(int j=0; j<size; j++){
 				elements[i][j] = matrix[i][j];
 			}
 		}
+*/
 	}
 
 	public double[][] rotateBy90(){
@@ -22,7 +23,7 @@ public class TwoDimensionalMatrix {
 		try{
 			for(int i=0; i<size ; i++){
 				for(int j=0; j<size; j++){
-					matrix90 [i][j] = matrix[size-j-1][i];
+					matrix90[i][j] = matrix[size-j-1][i];
 				}
 			}
 		}
