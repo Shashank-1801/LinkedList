@@ -2,8 +2,22 @@ package com.shekhar.otherProblems;
 
 import java.util.Scanner;
 
+/**
+ * 
+ * @author shashank
+ *	Implementation of the program where one matrix is rotated by 90 degrees, no more operations to be done.
+ *  
+ *  To run the program, export as Runnable JAR and use command line for running the jar
+ *  use the following command:
+ *  java -jar <jar-name>.jar
+ *  
+ *  To debug the program, use the runnable JAR and run with the following command:
+ *  java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -jar [JAR NAME HERE]
+ *  
+ */
+
 public class RotateMatixBy90 {
-	//implementation of the program where one matrix is rotated by 90 degrees, no more operations to be done.
+
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		//dimension of the square matrix
