@@ -17,11 +17,15 @@ public class NthNodeFromEnd {
 		
 		for(int i=0;i<10; i++){
 			int pos = posRandom(L1.lengthOfLinkedlist());
-			Node LastNNode = NodefromEnd(L1, pos);			//Using traversal
+			Node LastNNode = NodefromEnd(L1, pos);			//Using Multiple Traversal
 			if(LastNNode != null){
 				System.out.println("Last "+ pos+ " node form end is "+ LastNNode);
 			}
 			LastNNode = NodefromEndImpl2(L1, pos);			//Using HashTable
+			if(LastNNode != null){
+				System.out.println("Last "+ pos+ " node form end is "+ LastNNode);
+			}
+			LastNNode = NodeFromEndImpl3(L1, pos);			//Using Single traversal -> Best Impl
 			if(LastNNode != null){
 				System.out.println("Last "+ pos+ " node form end is "+ LastNNode);
 			}
@@ -54,6 +58,10 @@ public class NthNodeFromEnd {
 	}
 
 	public static Node NodefromEndImpl2(SingleLinkedList L, int position){
+		if(position<0 || position > L.lengthOfLinkedlist()){
+			System.out.println("Invalid position -> " + position);
+			return null;
+		}
 		Hashtable<Integer, Node> hashLinkedList = new Hashtable<Integer, Node>();
 		Node reqNode = null;
 		int len = L.lengthOfLinkedlist();
@@ -64,6 +72,31 @@ public class NthNodeFromEnd {
 		}
 		reqNode = hashLinkedList.get(len - position);
 		return reqNode;
+	}
+	
+	
+	public static Node NodeFromEndImpl3(SingleLinkedList L, int position){
+		int len = L.lengthOfLinkedlist();
+		if(len<=0){
+			System.out.println("Empty Linked List");
+		}
+		else if(position <0 || position > len){
+			System.out.println("Invalid position -> " + position );
+		}
+		else{		
+			Node tempN = null;
+			Node temp = L.getHead();
+			for(int i=0; i<position; i++){
+				temp = temp.getNext();
+			}
+			tempN = L.getHead();
+			while(temp!=null){
+				temp = temp.getNext();
+				tempN = tempN.getNext();
+			}
+			return tempN;
+		}
+		return null;
 	}
 
 	public static Node nodeRandom(){
