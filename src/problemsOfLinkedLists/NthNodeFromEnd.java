@@ -4,6 +4,8 @@ import java.util.Random;
 
 import singleLinkedList.*;
 
+
+//starting again
 public class NthNodeFromEnd {
 
 	public static void main(String[] args) {
