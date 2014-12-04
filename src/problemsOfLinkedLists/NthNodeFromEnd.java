@@ -5,7 +5,7 @@ import java.util.Random;
 import singleLinkedList.*;
 
 
-//starting again
+//class for finding the nth node from end of the linked list, given the value of n
 public class NthNodeFromEnd {
 
 	public static void main(String[] args) {
