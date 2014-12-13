@@ -179,6 +179,10 @@ public class SingleLinkedList {
 		}
 	}
 
+	public void setHead(Node newHead){
+		headNode = newHead;
+	}
+	
 	public Integer getValue(int position){
 		try{
 			int size = lengthOfLinkedlist();

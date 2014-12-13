@@ -79,7 +79,20 @@ public class CyclicLinkedListProblem {
 			}
 			fastptr = fastptr.getNext();
 			if(fastptr == slowptr){
-				System.out.println("Cyclic maybe at "+ fastptr.getData());
+				Node loop = slowptr.getNext();
+				int len = 1;
+				while(loop != slowptr){
+					loop = loop.getNext();
+					len++;
+				}
+				System.out.println("Lenght of the loop is " + len);
+				//loop found, now finding the head of the loop
+//				slowptr = List.getHead();
+//				while(fastptr!=slowptr){
+//					fastptr = fastptr.getNext();
+//					slowptr = slowptr.getNext();
+//				}
+//				System.out.println("Cyclic at "+ fastptr.getData());
 				return true;
 			}
 			count ++;			
