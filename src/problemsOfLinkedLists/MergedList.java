@@ -2,6 +2,7 @@ package problemsOfLinkedLists;
 
 import java.util.Hashtable;
 import java.util.Random;
+import java.util.Stack;
 
 import singleLinkedList.Node;
 import singleLinkedList.SingleLinkedList;
@@ -45,13 +46,15 @@ public class MergedList {
 		
 		System.out.println("#########################");
 		System.out.println("The list is merged : " + isMerged(L1, L2));
-		System.out.println("#########################");
 		System.out.println("The list is merged : " + isMerged(L1, L3));
 		System.out.println("#########################");
 		System.out.println("The list is merged : " + isMergedHashTable(L1, L2));
-		System.out.println("#########################");
 		System.out.println("The list is merged : " + isMergedHashTable(L1, L3));
 		System.out.println("#########################");
+		System.out.println("The list is merged : " + isMergedStacks(L1, L2));
+		System.out.println("The list is merged : " + isMergedStacks(L1, L3));
+		System.out.println("#########################");
+		
 	}
 	
 	public static boolean isMerged(SingleLinkedList List1, SingleLinkedList List2)
@@ -76,17 +79,63 @@ public class MergedList {
 	}
 
 	
+	public static boolean isMergedStacks(SingleLinkedList List1, SingleLinkedList List2)
+	{
+		Stack<Node> s1 = new  Stack<>();
+		Node temp = List1.getHead();
+		for(int i=0; i< List1.lengthOfLinkedlist(); i++){
+			s1.push(temp);
+			temp = temp.getNext();
+		}
+		
+		Stack<Node> s2 = new  Stack<>();
+		temp = List2.getHead();
+		for(int i=0; i< List2.lengthOfLinkedlist(); i++){
+			s2.push(temp);
+			temp = temp.getNext();
+		}
+		
+		int len;
+		if(List1.lengthOfLinkedlist() < List2.lengthOfLinkedlist()){
+			len = List1.lengthOfLinkedlist();
+		}else{
+			len = List2.lengthOfLinkedlist();
+		}
+		
+		Node commonNode = null;
+		Node temp2 = null;
+		int count = 0;
+		for(int i=0 ; i< len ; i++){
+			temp = (Node)s1.pop();
+			temp2 = (Node)s2.pop();
+			if(temp == temp2){
+				commonNode = temp;
+				count++;
+			}
+			else{
+				break;
+			}
+		}
+		
+		if(count> 0){
+			System.out.println("Merged at " + commonNode.getData());
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	public static boolean isMergedHashTable(SingleLinkedList List1, SingleLinkedList List2)
 	{
 		Hashtable<Integer, Node> table1 =new Hashtable<>();
-		Hashtable<Integer, Node> table2 =new Hashtable<>();
-		
+	
 		Node temp1 = List1.getHead();
 		for(int i =0 ; i< List1.lengthOfLinkedlist();i++){
 			table1.put(temp1.getData(), temp1);
 			temp1 = temp1.getNext();
 		}
 		
+		//look for a node in List2 which corresponds to a same node data and same address in Hash Table
 		Node temp2 = List2.getHead();
 		for(int x =0 ; x < List2.lengthOfLinkedlist(); x++){
 			Node temp = table1.get(temp2.getData());
