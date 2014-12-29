@@ -78,7 +78,7 @@ public class MergedList {
 		
 	}
 
-	
+	//method for merged linked list 
 	public static boolean isMergedStacks(SingleLinkedList List1, SingleLinkedList List2)
 	{
 		Stack<Node> s1 = new  Stack<>();
