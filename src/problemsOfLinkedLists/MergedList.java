@@ -54,6 +54,9 @@ public class MergedList {
 		System.out.println("The list is merged : " + isMergedStacks(L1, L2));
 		System.out.println("The list is merged : " + isMergedStacks(L1, L3));
 		System.out.println("#########################");
+		System.out.println("The list is merged : " + isMergedDiff(L1, L2));
+		System.out.println("The list is merged : " + isMergedDiff(L1, L3));
+		System.out.println("#########################");
 		
 	}
 	
@@ -78,7 +81,52 @@ public class MergedList {
 		
 	}
 
-	//method for merged linked list 
+	
+	//method for merged linked list using the diff form 2 lists
+	public static boolean isMergedDiff(SingleLinkedList List1, SingleLinkedList List2)
+	{
+		int len1 = List1.lengthOfLinkedlist();
+		int len2 = List2.lengthOfLinkedlist();
+		
+		Node temp = null;
+		int diff;
+		Node temp1, temp2;
+		if (len1 > len2){
+			diff = len1-len2;
+			temp = List1.getHead();
+			for(int i=0; i<diff; i++){
+				temp = temp.getNext();
+			}
+			temp2 = List2.getHead();
+			temp1 = temp;
+		}
+		else{
+			diff = len2 - len1;
+			temp = List2.getHead();
+			for(int i=0; i<diff; i++){
+				temp = temp.getNext();
+			}
+			temp2 = List1.getHead();
+			temp1 = temp;
+		}
+		
+		while(temp1!=null && temp2!=null){
+			if(temp1==temp2){
+				System.out.println("Merged at " + temp1.getData());
+				return true;
+			}
+			
+			temp1 = temp1.getNext();
+			temp2 = temp2.getNext();
+		}	
+		
+		
+			return false;
+
+	}
+	
+	
+	//method for merged linked list
 	public static boolean isMergedStacks(SingleLinkedList List1, SingleLinkedList List2)
 	{
 		Stack<Node> s1 = new  Stack<>();
