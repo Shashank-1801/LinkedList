@@ -153,7 +153,12 @@ public class SingleLinkedList {
 	}
 
 	public Node getHead(){
-		return headNode;
+		if(this!= null){
+			return headNode;
+		}
+		else{
+			return null;
+		}
 	}
 
 	public void update(int newValue, int position){
